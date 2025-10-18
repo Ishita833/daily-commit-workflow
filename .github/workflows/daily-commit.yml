@@ -2,7 +2,7 @@ name: Daily Repository Update
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at 00:00 UTC (midnight)
+    - cron: '0 0 * * *'  # Runs daily at 00:00 UTC (specific time, no wildcards)
 
 jobs:
   update:
@@ -11,8 +11,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: main
-          fetch-depth: 0  # Ensures full history for accurate diffs
+          ref: main  # Adjust to 'master' if your default branch differs
+          fetch-depth: 0  # Full history for commits
 
       - name: Update status log by 23f3000833@ds.study.iitm.ac.in
         run: |
